@@ -1,0 +1,14 @@
+.left{
+  position:absolute;
+  width:30%;
+  top:0;
+  left:0;
+  background-color:lightblue;
+}
+.right{
+  position:absolute;
+  top:0;
+  right:0;
+  width:70%;
+  background-color:lightgreen;
+}
