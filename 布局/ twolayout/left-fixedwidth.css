@@ -1,0 +1,28 @@
+//左float
+.left{
+  background-color:lightblue;
+  width:200px;
+  float:left;
+}
+.right{
+  background-color:lightgreen;
+}
+
+
+
+//左absolute,右边设置margin-left或者padding-left
+body{
+  margin:0;
+  padding:0;
+}
+.left{
+  position:absolute;
+  background-color:lightblue;
+  width:200px;
+  top:0;
+  left:0;
+}
+.right{
+  margin-left:210px;
+  background-color:lightgreen;
+}
