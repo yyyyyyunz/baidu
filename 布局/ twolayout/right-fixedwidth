@@ -1,0 +1,29 @@
+//双float,左侧宽度由calc函数计算
+.left{
+  background-color:red;
+  float:left;
+  width:calc(100% - 200px);
+}
+.right{
+  background-color:blue;
+  width:200px;
+  float:left;
+}
+
+
+
+//右侧position:absolute
+body{
+  padding:0;
+  margin:0;
+}
+.right{
+  background-color:red;
+  position:absolute;
+  top:0;
+  right:0;
+  width:200px;
+}
+.left{
+  background-color:blue;
+}
