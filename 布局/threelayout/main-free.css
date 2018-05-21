@@ -1,0 +1,111 @@
+//圣杯布局
+body{
+  margin:0;
+  margin-left:100px;
+  margin-right:100px;
+}
+.left{
+  background-color:lightblue;
+  width:100px;
+  height:100px;
+  float:left;
+  margin-left:-100%;
+  position:relative;
+  right:100px;
+}
+.right{
+  background-color:lightpink;
+  width:100px;
+  height:100px;
+  float:left;
+  margin-left:-100px;
+  position:relative;
+  left:100px;
+}
+.main{
+  float:left;
+  width:100%;
+  background-color:orange;
+}
+
+
+
+//双飞翼布局
+body{
+  margin:0;
+}
+.left{
+  background-color:lightblue;
+  width:100px;
+  height:100px;
+  float:left;
+  margin-left:-100%;
+}
+.right{
+  background-color:yellow;
+  width:100px;
+  height:100px;
+  float:left;
+  margin-left:-100px;
+}
+.main{
+  float:left;
+  width:100%;
+  background-color:orange;
+}
+.content{
+  margin-left:100px;
+  margin-right:100px;
+  background-color:purple;
+}
+
+
+
+
+//双float布局
+body{
+  margin:0;
+}
+.left{
+  float:left;
+  background-color:lightpink;
+  width:100px;
+  height:100px;
+}
+.right{
+  float:right;
+  background-color:lightgreen;
+  width:100px;
+  height:100px;
+}
+.main{
+  margin:0 110px;
+  background-color:orange;
+  
+}
+
+
+//双position布局
+.body{
+  margin:0;
+}
+.left{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100px;
+  height:100px;
+  background-color:lightpink;
+}
+.right{
+  position:absolute;
+  right:0;
+  top:0;
+  width:100px;
+  height:100px;
+  background-color:lightgreen;
+}
+.main{
+  margin:0 110px;
+  background-color:orange;
+}
