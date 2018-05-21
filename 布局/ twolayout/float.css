@@ -1,0 +1,8 @@
+.left{
+  float:left;
+  background-color:lightblue;
+  width:30%;
+}
+.right{
+  background-color:lightgreen;
+}
