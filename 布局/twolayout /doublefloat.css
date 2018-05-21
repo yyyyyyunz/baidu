@@ -1,0 +1,12 @@
+.left{
+  background-color:lightblue;
+  width:30%;
+}
+.right{
+  background-color:lightpink;
+  width:70%;
+}
+.left,.right{
+  float:left;
+  height:100px;
+}
