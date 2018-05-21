@@ -1,0 +1,106 @@
+//双float方案
+body{
+  margin:0;
+}
+.left{
+  float:left;
+  width:100px;
+  height:100px;
+  background-color:lightblue;
+}
+.main{
+  float:left;
+  width:100px;
+  height:100px;
+  background-color:lightgreen;
+}
+.right{
+  background-color:orange;
+  
+}
+
+
+//双position方案
+body{
+  margin:0;
+}
+.left{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100px;
+  height:100px;
+  background:lightgreen;
+}
+.main{
+  position:absolute;
+  left:100px;
+  height:100px;
+  width:100px;
+  top:0;
+  background:lightpink;
+}
+.right{
+  background-color:orange;
+  margin-left:210px;
+}
+
+
+
+//负边距方案（类似圣杯布局）
+body{
+  margin-left:210px;
+}
+.left{
+  float:left;
+  width:100px;
+  height:100px;
+  background:lightgreen;
+  margin-left:-100%;
+  position:relative;
+  right:200px;
+}
+.main{
+  float:left;
+  height:100px;
+  width:100px;
+  background:lightpink;
+  margin-left:calc(-100% + 100px);
+  position:relative;
+  right:200px;
+}
+.right{
+  float:left;
+  background-color:orange;
+  width:100%;
+}
+
+
+//负边距方案（双边翼布局）
+body{
+  margin:0;
+}
+.content{
+  margin-left:200px;
+}
+.left{
+  float:left;
+  width:100px;
+  height:100px;
+  background:lightgreen;
+  margin-left:-100%;
+  
+}
+.main{
+  float:left;
+  height:100px;
+  width:100px;
+  background:lightpink;
+  margin-left:calc(-100% + 100px);
+  
+}
+.right{
+  float:left;
+  background-color:orange;
+  width:100%;
+}
