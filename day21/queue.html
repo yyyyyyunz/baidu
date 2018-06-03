@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Queue test</title>
+</head>
+<body>
+	<input id="queue-input" type="text">
+	<p id="queue-cont">队列内容：apple-&gt;pear</p>    
+	<button id="in-btn">入队</button>
+	<button id="out-btn">出队</button>
+	<button id="font-btn">打印队头元素内容</button>
+	<button id="empty-btn">判断队列是否为空</button>
+
+	<script>
+		var queue = ["apple", "pear"];
+		var btnin=document.getElementById("in-btn");
+		var btnout=document.getElementById("out-btn");
+		var btnfont=document.getElementById("font-btn");
+		var btnempty=document.querySelector("#empty-btn");
+		var queuecont=document.querySelector("#queue-cont");
+
+/*
+//队头对应数组的最后一个元素
+	btnin.onclick=function(){
+			queue.unshift("peach");
+			var string=queue.join("->");
+			queuecont.innerHTML=string;
+		}
+		btnout.onclick=function(){
+			queue.pop();
+			var string=queue.join("->");			
+			queuecont.innerHTML=string;
+		}
+		btnfont.onclick=function(){
+			queuecont.innerHTML=queue[queue.length-1];
+		}
+		btnempty.onclick=function(){
+			if(queue.length>0){return false;}
+			else{return true;}
+		}
+
+		*/
+
+		//队头对应最左侧元素
+	btnin.onclick=function(){
+		queue.push("peach");
+		var string=queue.join("<-");
+		queuecont.innerHTML=string;
+	}
+	btnout.onclick=function(){
+		queue.shift();
+		var string=queue.join("<-");
+		queuecont.innerHTML=string;
+	}
+	btnfont.onclick=function(){
+		queuecont.innerHTML=queue[0];
+	}
+	btnempty.onclick=function(){
+		if(queue.length>0){console.log(false);}
+		else{console.log(true);}
+	}
+	</script>
+</body>
+</html>
