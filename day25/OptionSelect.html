@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Option Select</title>
+</head>
+<body>
+	<select id="year-select"></select>
+	<select id="month-select"></select>
+	<select id="day-select"></select>
+	<select id="hour-select"></select>
+	<select id="minute-select"></select>
+	<select id="second-select"></select>
+	<p id="result-wrapper"></p>
+
+	<script>
+		var year=document.getElementById("year-select");
+		var month=document.getElementById("month-select");
+		var day=document.getElementById("day-select");
+		var hour=document.getElementById("hour-select");
+		var minute=document.getElementById("minute-select");
+		var second=document.getElementById("second-select");
+		//创造option
+		function CreateOption(element,start,end){
+			for(var i=start;i<end+1;i++){
+				var option=document.createElement("option");
+				option.value=i;
+				option.text=i;
+				element.appendChild(option);
+			}
+		}
+		CreateOption(year,2000,2032);
+		CreateOption(month,1,12);
+		CreateOption(day,1,31);
+		CreateOption(hour,0,23);
+		CreateOption(minute,0,59);
+		CreateOption(second,0,59);
+		//年月改变造成日改变的事件处理
+		year.onchange=function(){
+			ChangeOption();
+		}
+		month.onchange=function() {
+			ChangeOption();
+		}
+		//动态改变下拉列表选项
+		function ChangeOption(){
+			day.length=0;
+			CreateOption(day,1,days());
+		}
+		function days(){
+			var days=0;
+			var y=Number(year.value);
+			var m=Number(month.value);
+			switch(m){
+				case 1:case 3:case 5:case 7:case 8:case 10:case 12:
+				days=31;
+				case 4:case 6:case 9:case 11:
+				days=30;
+				case 2:
+				days=((y%4===0&&y%100!==0)||(y%400===0))?29:28;
+			}
+			return days;
+		}
+		//获取选择时间
+		function getSelectTime(){
+			var y=year.value;
+			var mon=month.value-1;
+			var d=day.value;
+			var h=hour.value;
+			var min=minute.value;
+			var s=second.value;
+			return new Date(y,mon,d,h,min,s);
+		}
+		//计算时差
+		function timeChange(){
+			var p=document.getElementById("result-wrapper");
+			var today=new Date();
+			var time=getSelectTime();
+			var diff = today - time;
+            var dayDiff = Math.floor(Math.abs(diff) / (24 * 60 * 60 * 1000));
+            var a = Math.floor(Math.abs(diff) % (24 * 60 * 60 * 1000));
+            var hourDiff = Math.floor(a / (60 * 60 * 1000));
+            var b = a % (60 * 60 * 1000);
+            var minuteDiff = Math.floor(b / (60 * 1000));
+            var secondDiff = Math.round(Math.floor(b % (60 * 1000)) / 1000);
+            var selectedMonth = time.getMonth()+1;
+            if(diff > 0){
+                p.innerHTML = "现在距离" + time.getFullYear() + "年" + selectedMonth + "月" + time.getDate()
+                        + "日 " + weekday(time.getDay()) + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds() +
+                         " 已经过去 " + dayDiff + " 天 " + hourDiff + " 小时 " + minuteDiff + " 分钟 " + secondDiff + " 秒";
+                    }
+            else {
+                p.innerHTML = "现在距离" + time.getFullYear() + "年" + selectedMonth + "月" + time.getDate()
+                + "日" + weekday(time.getDay()) + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds() +
+                " 还有 " + dayDiff + " 天 " + hourDiff + " 小时 " + minuteDiff + " 分钟 " + secondDiff + " 秒";
+            }
+            setTimeout(timeChange,500);
+		}
+		function weekday(day){
+			var weekday;
+			switch(day){
+				case 0:
+				weekday="星期日";break;
+				case 1:
+				weekday="星期一";break;
+				case 2:
+				weekday="星期二";break;
+				case 3:
+				weekday="星期三";break;
+				case 4:
+				weekday="星期四";break;
+				case 5:
+				weekday="星期五";break;
+				case 6:
+				weekday="星期六";break;
+			}
+			return weekday;
+		}
+		timeChange();
+	</script>
+</body>
+</html>
+
+
