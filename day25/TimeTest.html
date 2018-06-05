@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TimeTest</title>
+</head>
+<body>
+	<p id="prograph"></p>
+	<script>
+		function StartTime(){
+			var today = new Date();
+			var year=today.getFullYear();
+			var month=today.getMonth();
+			var date=checkTime(today.getDate());
+			var h=checkTime(today.getHours());
+			var m=checkTime(today.getMinutes());
+			var s=checkTime(today.getSeconds());
+			var day=today.getDay();
+			month+=1;
+			month=checkTime(month);
+			document.getElementById("prograph").innerHTML=timetype2(year,month,date,h,m,s,day);
+			t=setTimeout("StartTime()",500);
+		}
+		function checkTime(i){
+			if(i<10){
+				i="0"+i;
+			}
+			return i;
+		}
+		function timetype1(year,month,date,hour,minute,second,day){
+			var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+			return year+"年"+month+"月"+date+"日 "+weekday[day]+" "+hour+":"+minute+":"+second;
+		}
+		function timetype2(year,month,date,hour,minute,second,day){
+			var weekday=["Sunday","Monday","Tuesday","Wensday","Thursday","Firday","Saturday"];
+			var time;
+			if(hour<=12){
+				time="AM";
+			}
+			else{
+				hour-=12;
+				hour=checkTime(hour);
+				time="PM";
+			}
+			return year+"-"+month+"-"+date+" "+weekday[day]+" "+hour+":"+minute+":"+second+" "+time;
+		}
+		StartTime();
+	</script>
+</body>
