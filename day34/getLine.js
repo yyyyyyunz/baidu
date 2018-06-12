@@ -1,11 +1,12 @@
 function getLine(list){
+	console.log(list);
 	var linewrapper = document.getElementById("line-wrapper");
 	linewrapper.setAttribute("style","width:600px;height:400px");
 
 	var myChart = echarts.init(document.getElementById("line-wrapper"));
 
 	var option={
-		color:["#ab23ab"],
+		color:["#ff4d4d","#ff3333","#ff1a1a","#ff0000","#e60000","#cc0000"],
 
 		grid:{
 			left: "3%",
@@ -22,11 +23,31 @@ function getLine(list){
 			type:"value"
 
 		},
-		series:[{
-			data:list,
-			type:"line"
-		}]
+		series:getSerise(list),
 	};
 
 	myChart.setOption(option);
+}
+
+function getSerise(list){
+	let series=[];
+	var d;
+	for(let i=0;i<list.length;i++){
+		if(Array.isArray(list[i])){
+			d={
+				data:list[i],
+				type:"line"
+			}
+			series.push(d);
+		}
+		else{
+			d={
+				data:list,
+				type:"line"
+			}
+			series.push(d);
+			break;
+		}
+	}
+	return series;
 }
