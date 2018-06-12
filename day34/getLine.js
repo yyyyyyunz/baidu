@@ -1,9 +1,13 @@
+var myChart2;
 function getLine(list){
-	console.log(list);
+	//console.log(list);
+	if(myChart2!=""&&myChart2!=null&&myChart2!=undefined){
+		myChart2.dispose();
+	}
 	var linewrapper = document.getElementById("line-wrapper");
 	linewrapper.setAttribute("style","width:600px;height:400px");
 
-	var myChart = echarts.init(document.getElementById("line-wrapper"));
+	 myChart2 = echarts.init(document.getElementById("line-wrapper"));
 
 	var option={
 		color:["#ff4d4d","#ff3333","#ff1a1a","#ff0000","#e60000","#cc0000"],
@@ -26,7 +30,7 @@ function getLine(list){
 		series:getSerise(list),
 	};
 
-	myChart.setOption(option);
+	myChart2.setOption(option);
 }
 
 function getSerise(list){
