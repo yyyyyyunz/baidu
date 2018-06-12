@@ -17,10 +17,15 @@ productCheck.onclick = function second(){
 	showEchact();
 }
 
+
 table.onmouseover = function third(event){
 	let target = event.target||event.srcElement;
 	console.log(target);
 	showEchact(target);
+}
+
+table.onmouseout = function four(event){
+	showLines();
 }
 
 /*
