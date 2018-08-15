@@ -8,23 +8,20 @@ function extend(Child, Parent) {
 }
 
 //餐厅类
-function Restaurant(cash, staff, seats) {
-	this.seats = seats;
-	this.staff = staff;
-	this.cash = cash;
+function Restaurant(obj) {
+	this.seats = obj.seats;
+	this.staff = obj.staff;
+	this.cash = obj.cash;
 
 	this.hire = function(Workman) {
 		console.log(Workman.name + "被餐厅招聘了！");
-		staff.push(Workman);
+		this.staff.push(Workman);
 
 	}
 	this.fire = function(Workman) {
 		console.log(Workman.name + "被餐厅解雇了！");
-		for(let i=0; i<staff.length; i++){
-			if(staff[i].id === Workman.id) {
-				staff[i] = null;
-			}
-		}
+		var num = this.staff.indexOf(Workman);
+		this.staff.splice(num, 1);
 	}
 }
 
@@ -37,6 +34,7 @@ function Workman(name, id, payment) {
 
 //服务员类
 function Waiter(foods) {
+	Workman.apply(this, arguments);
 	this.work = function() {
 		if(Array.isArray(foods)){
 			console.log("客人点菜：");
@@ -48,17 +46,18 @@ function Waiter(foods) {
 }
 
 //服务员类继承职员类
-extend(Waiter, Workman);
+//extend(Waiter, Workman);
 
 //厨师类
 function Cooker(food) {
+	Workman.apply(this, arguments);
 	this.work = function() {
 		console.log("厨师完成" + food.name);
 	}
 }
 
 //厨师类继承职员类
-extend(Cooker, Workman);
+//extend(Cooker, Workman);
 
 //顾客类
 function Customer() {
@@ -79,10 +78,15 @@ function food(name, cost, price) {
 
 
 
-var ifeRestaurant = new Restaurant(1000000, 20,[]);
-var foods = new food("s", 100, 1000);
+var ifeRestaurant = new Restaurant({
+	cash : 100000,
+	staff : [],
+	seats : 20
 
-var newCook = new Cooker(foods,"Tony", 1, 10000);
+});
+var foods = new food("鱼香肉丝", 100, 1000);
+
+var newCook = new Cooker('Tony', 1, 10000, foods);
 ifeRestaurant.hire(newCook);
 
 console.log(ifeRestaurant.staff);
